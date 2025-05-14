@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HIVMedicalSystem.WPFApplication", "HIVMedicalSystem.WPFApplication\HIVMedicalSystem.WPFApplication.csproj", "{4DD2B71F-FBE3-42D2-A9B6-27D86CC248EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D46E80E9-C079-4B07-A8D4-7FD4FE93AB63}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{9488ADA9-1F75-4255-A8E0-07D987F1034D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7E645113-837C-4C93-B486-A37FA796DDA7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4DD2B71F-FBE3-42D2-A9B6-27D86CC248EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DD2B71F-FBE3-42D2-A9B6-27D86CC248EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DD2B71F-FBE3-42D2-A9B6-27D86CC248EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DD2B71F-FBE3-42D2-A9B6-27D86CC248EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9488ADA9-1F75-4255-A8E0-07D987F1034D} = {D46E80E9-C079-4B07-A8D4-7FD4FE93AB63}
+		{4DD2B71F-FBE3-42D2-A9B6-27D86CC248EC} = {9488ADA9-1F75-4255-A8E0-07D987F1034D}
+	EndGlobalSection
+EndGlobal
