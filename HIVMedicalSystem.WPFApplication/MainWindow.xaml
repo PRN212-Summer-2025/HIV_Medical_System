@@ -7,8 +7,12 @@
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="MainWindow" Width="800">
     <Grid>
+        <!--
         <local:Demo></local:Demo>
+        -->
+        <DataGrid x:Name="dgData"></DataGrid>
     </Grid>
 </Window>

@@ -1,0 +1,58 @@
+﻿<Page x:Class="HIVMedicalSystem.WPFApplication.Pages.Customer.CustomerSupport"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:HIVMedicalSystem.WPFApplication.Pages.Customer"
+      mc:Ignorable="d"
+      Title="CustomerSupport">
+    <ScrollViewer Margin="20,10,20,20">
+        <WrapPanel Orientation="Horizontal" ItemWidth="460" ItemHeight="Auto" HorizontalAlignment="Center">
+
+            <!-- Card: ARV Treatment -->
+            <Border Background="White" CornerRadius="12" Padding="16" Margin="10"
+                    Effect="{DynamicResource DropShadowEffect}">
+                <StackPanel>
+                    <TextBlock Text="💊 ARV Therapy" FontSize="18" FontWeight="Bold" Foreground="#2D8CFF"/>
+                    <TextBlock Text="Antiretroviral (ARV) therapy helps control HIV infection, reduce viral load, and improve the immune system. It must be taken daily and continuously for best outcomes." 
+                               Margin="0,8,0,0" TextWrapping="Wrap"/>
+                    <Button Content="Learn More" HorizontalAlignment="Right" Margin="0,12,0,0" Width="100"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Card: CD4 Count -->
+            <Border Background="White" CornerRadius="12" Padding="16" Margin="10"
+                    Effect="{DynamicResource DropShadowEffect}">
+                <StackPanel>
+                    <TextBlock Text="🧬 CD4 Count Monitoring" FontSize="18" FontWeight="Bold" Foreground="#2D8CFF"/>
+                    <TextBlock Text="CD4 cells are a type of white blood cell. Monitoring CD4 count helps evaluate immune health and the effectiveness of ARV treatment." 
+                               Margin="0,8,0,0" TextWrapping="Wrap"/>
+                    <Button Content="Check CD4" HorizontalAlignment="Right" Margin="0,12,0,0" Width="100"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Card: HIV Viral Load -->
+            <Border Background="White" CornerRadius="12" Padding="16" Margin="10"
+                    Effect="{DynamicResource DropShadowEffect}">
+                <StackPanel>
+                    <TextBlock Text="📊 HIV Viral Load" FontSize="18" FontWeight="Bold" Foreground="#2D8CFF"/>
+                    <TextBlock Text="Viral load testing measures the amount of HIV in the blood. A low or undetectable viral load means effective treatment and lower risk of transmission." 
+                               Margin="0,8,0,0" TextWrapping="Wrap"/>
+                    <Button Content="View Results" HorizontalAlignment="Right" Margin="0,12,0,0" Width="100"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Card: Treatment Adherence Support -->
+            <Border Background="White" CornerRadius="12" Padding="16" Margin="10"
+                    Effect="{DynamicResource DropShadowEffect}">
+                <StackPanel>
+                    <TextBlock Text="📅 Treatment Adherence" FontSize="18" FontWeight="Bold" Foreground="#2D8CFF"/>
+                    <TextBlock Text="Support for maintaining daily ARV intake is essential. Reminders, counseling, and peer support improve treatment outcomes." 
+                               Margin="0,8,0,0" TextWrapping="Wrap"/>
+                    <Button Content="Get Support" HorizontalAlignment="Right" Margin="0,12,0,0" Width="100"/>
+                </StackPanel>
+            </Border>
+
+        </WrapPanel>
+    </ScrollViewer>
+</Page>
