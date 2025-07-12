@@ -1,6 +1,8 @@
-﻿namespace HIVMedicalSystem.Domain.Entities;
+﻿using HIVMedicalSystem.Domain.Abstractions.Entities;
 
-public class DegreeType
+namespace HIVMedicalSystem.Domain.Entities;
+
+public class DegreeType: Entity<int>
 {
-    
+    public string DegreeTypeName { get; set; }
 }

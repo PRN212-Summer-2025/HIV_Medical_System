@@ -1,6 +1,8 @@
-﻿namespace HIVMedicalSystem.Domain.Entities;
+﻿using HIVMedicalSystem.Domain.Abstractions.Entities;
 
-public class UserRole
+namespace HIVMedicalSystem.Domain.Entities;
+
+public class UserRole: Entity<int>
 {
     
 }

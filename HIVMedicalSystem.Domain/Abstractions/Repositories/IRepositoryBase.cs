@@ -12,13 +12,13 @@ public interface IRepositoryBase<TEntity> where TEntity : class
         int? pageIndex = null,
         int? pageSize = null);
 
-    Task<TEntity> GetByID(object id);
+    TEntity GetByID(object id);
 
-    Task Insert(TEntity entity);
+    void Insert(TEntity entity);
 
     Task Delete(object id);
 
     Task Delete(TEntity entity);
 
-    void Update(TEntity entity);
+    Task Update(TEntity entity);
 }

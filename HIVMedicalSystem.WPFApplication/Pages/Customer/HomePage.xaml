@@ -1,0 +1,59 @@
+﻿<Page x:Class="HIVMedicalSystem.WPFApplication.Pages.Customer.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:HIVMedicalSystem.WPFApplication.Pages.Customer"
+      mc:Ignorable="d"
+      Title="HomePage">
+    <Grid>
+        <!-- MAIN CONTENT -->
+        <ScrollViewer Margin="20,10,20,20">
+            <WrapPanel Orientation="Horizontal" ItemWidth="460" ItemHeight="200" HorizontalAlignment="Center">
+                <!-- Card: Medical System Overview -->
+                <Border Background="White" CornerRadius="12" Padding="16" Margin="10"
+                        Effect="{DynamicResource DropShadowEffect}">
+                    <StackPanel>
+                        <TextBlock Text="📋 Medical System Overview" FontSize="18" FontWeight="Bold" Foreground="#2D8CFF"/>
+                        <TextBlock Text="Our facility offers a full range of HIV-related healthcare services, from testing and diagnosis to treatment, ARV therapy, and long-term support for all patients." 
+                                   Margin="0,8,0,0" TextWrapping="Wrap"/>
+                        <Button Content="View Details" HorizontalAlignment="Right" Margin="0,12,0,0" Width="100"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Card: Educational Documents -->
+                <Border Background="White" CornerRadius="12" Padding="16" Margin="10"
+                        Effect="{DynamicResource DropShadowEffect}">
+                    <StackPanel>
+                        <TextBlock Text="📘 Educational Documents" FontSize="18" FontWeight="Bold" Foreground="#2D8CFF"/>
+                        <TextBlock Text="Access verified materials on HIV prevention, treatment guidelines, understanding ARV medications, managing stigma, and supporting patients." 
+                                   Margin="0,8,0,0" TextWrapping="Wrap"/>
+                        <Button Content="Browse Docs" HorizontalAlignment="Right" Margin="0,12,0,0" Width="100"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Card: Blog – Patient Story 1 -->
+                <Border Background="White" CornerRadius="12" Padding="16" Margin="10"
+                        Effect="{DynamicResource DropShadowEffect}">
+                    <StackPanel>
+                        <TextBlock Text="🧑‍⚕️ Minh’s Story – Living with HIV" FontSize="18" FontWeight="Bold" Foreground="#2D8CFF"/>
+                        <TextBlock Text="Minh shares how early diagnosis and access to ARV treatment helped him lead a normal life. A personal story of courage and consistency." 
+                                   Margin="0,8,0,0" TextWrapping="Wrap"/>
+                        <Button Content="Read Blog" HorizontalAlignment="Right" Margin="0,12,0,0" Width="100"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Card: Blog – Prevention & Youth -->
+                <Border Background="White" CornerRadius="12" Padding="16" Margin="10"
+                        Effect="{DynamicResource DropShadowEffect}">
+                    <StackPanel>
+                        <TextBlock Text="👩‍🎓 Youth Awareness &amp; HIV Prevention" FontSize="18" FontWeight="Bold" Foreground="#2D8CFF"/>
+                        <TextBlock Text="Our blog discusses the importance of educating young people about HIV prevention and safe practices to reduce stigma and misinformation." 
+                                   Margin="0,8,0,0" TextWrapping="Wrap"/>
+                        <Button Content="Explore Blog" HorizontalAlignment="Right" Margin="0,12,0,0" Width="100"/>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

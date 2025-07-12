@@ -4,7 +4,7 @@ namespace HIVMedicalSystem.WPFApplication;
 
 public partial class Demo : UserControl
 {
-    public Demo()
+    public Demo() 
     {
         InitializeComponent();
     }
