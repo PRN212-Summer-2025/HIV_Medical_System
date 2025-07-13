@@ -1,7 +1,9 @@
 ﻿using System.Configuration;
 using System.Data;
 using System.Windows;
+using HIVMedicalSystem.Service.Abstraction;
 using HIVMedicalSystem.WPFApplication.Configuration;
+using HIVMedicalSystem.WPFApplication.Windows.Authentication;
 using HIVMedicalSystem.WPFApplication.Windows.Customer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -33,10 +35,12 @@ public partial class App : Application
     
     protected override async void OnStartup(StartupEventArgs e)
     {
+        var seedingDatabaseService = _host.Services.GetRequiredService<ISeedingDatabaseService>();
+        await seedingDatabaseService.Seeding();
         await _host.StartAsync();
         
         // Open the login window
-        var window = _host.Services.GetRequiredService<HomeWindow>();
+        var window = _host.Services.GetRequiredService<LoginWindow>();
         window.Show();
         base.OnStartup(e);
     }

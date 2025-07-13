@@ -17,4 +17,9 @@ public class UserService : IUserService
     {
         return await _userRepository.GetAllUsersAsync();
     }
+
+    public async Task<int> Authentication(string email, string password)
+    {
+        return await _userRepository.Authentication(email, password);
+    }
 }

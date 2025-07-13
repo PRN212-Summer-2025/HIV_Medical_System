@@ -11,4 +11,14 @@ public class UserRepository: IUserRepository
         var result = await UserDAO.Instance.Get();
         return result.ToList();
     }
+
+    public async Task<int> Authentication(string email, string password)
+    {
+        var result = await UserDAO.Instance.Get(
+            filter: item => item.Email.Equals(email) && item.Password.Equals(password),
+            orderBy: item => item.OrderBy(user => user.Id),
+            includeProperties: "Degrees,Role"
+        );
+        return result.FirstOrDefault()!.RoleId; 
+    }
 }
