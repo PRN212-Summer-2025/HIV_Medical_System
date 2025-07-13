@@ -5,4 +5,5 @@ namespace HIVMedicalSystem.Service.Abstraction;
 public interface IUserService
 {
     public Task<List<User>> GetAllUsersAsync();
+    public Task<int> Authentication(string email, string password);
 }
