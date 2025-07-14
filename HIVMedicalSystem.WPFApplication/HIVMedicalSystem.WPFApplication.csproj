@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="AutoMapper" Version="15.0.1" />
+      <PackageReference Include="AutoMapper" Version="14.0.0" />
       <PackageReference Include="MaterialDesignColors" Version="5.2.0" />
       <PackageReference Include="MaterialDesignThemes" Version="5.2.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.16" />
@@ -38,6 +38,7 @@
     <ItemGroup>
       <Folder Include="Assets\Images\" />
       <Folder Include="Home\" />
+      <Folder Include="Windows\Doctor\" />
     </ItemGroup>
 
     <ItemGroup>

@@ -15,4 +15,6 @@ public class User: Entity<int>
     public ICollection<MedicalRecord> MedicalRecordHistory { get; set; }
     public ICollection<MedicalRecord> MedicalRecordsHandled { get; set; }
     public ICollection<TestResult> TestResults { get; set; }
+    public ICollection<Appointment> AppointmentsBooked { get; set; }
+    public ICollection<Appointment> AppointmentsHandled { get; set; }
 }

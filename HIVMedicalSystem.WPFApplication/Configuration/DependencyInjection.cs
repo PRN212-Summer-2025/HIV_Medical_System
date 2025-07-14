@@ -5,6 +5,7 @@ using HIVMedicalSystem.Service.Abstraction;
 using HIVMedicalSystem.WPFApplication.Windows.Admin;
 using HIVMedicalSystem.WPFApplication.Windows.Authentication;
 using HIVMedicalSystem.WPFApplication.Windows.Customer;
+using HIVMedicalSystem.WPFApplication.Windows.Staff;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace HIVMedicalSystem.WPFApplication.Configuration;
@@ -15,6 +16,10 @@ public static class DependencyInjection
     {
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ISeedingDatabaseRepository, SeedingDatabaseRepository>();
+        services.AddScoped<ITestResultRepository, TestResultRepository>();
+        services.AddScoped<IARVProtocolRepository, ARVProtocolRepository>();    
+        services.AddScoped<IMedicalRecordRepository, MedicalRecordRepository>();
+        services.AddScoped<IAppointmentRepository, AppointmentRepository>();
         return services;
     }
 
@@ -22,6 +27,10 @@ public static class DependencyInjection
     {
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<ISeedingDatabaseService, SeedingDatabaseService>();
+        services.AddScoped<IARVProtocolService, ARVProtocolService>();
+        services.AddScoped<IMedicalRecordService, MedicalRecordService>();
+        services.AddScoped<ITestResultService, TestResultService>();
+        services.AddScoped<IAppointmentService, AppointmentService>();
         return services;
     }
 
@@ -31,11 +40,13 @@ public static class DependencyInjection
         services.AddTransient<HomeWindow>();
         services.AddTransient<LoginWindow>();
         services.AddTransient<AdminDashboard>();
+        services.AddTransient<StaffDashboard>();
         return services;
     }
 
     public static IServiceCollection AddAutoMapperConfiguration(this IServiceCollection services)
     {
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         return services;
     }
 }

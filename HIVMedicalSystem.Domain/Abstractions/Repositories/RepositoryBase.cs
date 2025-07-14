@@ -11,6 +11,7 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
     public async Task<IEnumerable<TEntity>> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "", int? pageIndex = null,
         int? pageSize = null)
     {
+        Console.WriteLine("hoho");
         try
         {
             using var context = new AppDbContext();
@@ -45,6 +46,7 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
         catch (Exception ex)
         {
             Console.WriteLine(ex.InnerException);
+            Console.WriteLine("hehe");
             return null;
         }
     }

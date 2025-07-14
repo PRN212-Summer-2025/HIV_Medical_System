@@ -340,4 +340,93 @@ public class DataSeeding
             Console.WriteLine(ex.InnerException);
         }
     }
+
+    public async Task ARVProtocolSeedingAsync()
+    {
+        try
+        {
+            Console.WriteLine("Hehe");
+            using var context = new AppDbContext();
+            if (await context.ARVProtocols.AnyAsync()) return;
+            var protocols = new List<ARVProtocol>()
+            {
+                new ARVProtocol
+                {
+                    Name = "TDF + 3TC + DTG",
+                    TargetGroup = "Người lớn",
+                    Line = "Bậc 1",
+                    Description = "Phác đồ ưu tiên. Hiệu quả cao, ít tác dụng phụ. Không dùng nếu suy thận nặng."
+                },
+                new ARVProtocol
+                {
+                    Name = "TDF + 3TC + EFV",
+                    TargetGroup = "Người lớn",
+                    Line = "Bậc 1",
+                    Description = "Phác đồ thay thế khi không có DTG. Dùng liều 1 viên/ngày."
+                },
+                new ARVProtocol
+                {
+                    Name = "ABC + 3TC + DTG",
+                    TargetGroup = "Người lớn",
+                    Line = "Bậc 1",
+                    Description = "Dùng khi không dung nạp TDF. Chống chỉ định nếu dị ứng với Abacavir."
+                },
+                new ARVProtocol
+                {
+                    Name = "TDF + 3TC + DTG",
+                    TargetGroup = "Phụ nữ mang thai",
+                    Line = "Bậc 1",
+                    Description = "An toàn từ tuần thứ 6 của thai kỳ. Theo dõi định kỳ chức năng gan và tải lượng virus."
+                },
+                new ARVProtocol
+                {
+                    Name = "TDF + 3TC + EFV",
+                    TargetGroup = "Phụ nữ mang thai",
+                    Line = "Bậc 1",
+                    Description = "Có thể sử dụng trong thai kỳ nếu không có DTG."
+                },
+                new ARVProtocol
+                {
+                    Name = "ABC + 3TC + LPV/r",
+                    TargetGroup = "Trẻ em < 3 tuổi",
+                    Line = "Bậc 1",
+                    Description = "Liều theo cân nặng. Lưu ý theo dõi tác dụng phụ đường tiêu hóa."
+                },
+                new ARVProtocol
+                {
+                    Name = "ABC + 3TC + DTG",
+                    TargetGroup = "Trẻ em ≥ 10kg",
+                    Line = "Bậc 1",
+                    Description = "Hiệu quả cao, ít tương tác thuốc. Dễ sử dụng cho trẻ."
+                },
+                new ARVProtocol
+                {
+                    Name = "TDF + 3TC + ATV/r",
+                    TargetGroup = "Người lớn",
+                    Line = "Bậc 2",
+                    Description = "Phác đồ thay thế khi thất bại bậc 1. Theo dõi men gan và lipid máu."
+                },
+                new ARVProtocol
+                {
+                    Name = "AZT + 3TC + LPV/r",
+                    TargetGroup = "Người lớn",
+                    Line = "Bậc 2",
+                    Description = "Áp dụng khi phác đồ có EFV thất bại. Có thể gây thiếu máu, cần theo dõi huyết học."
+                },
+                new ARVProtocol
+                {
+                    Name = "DTG + DRV/r + 3TC",
+                    TargetGroup = "Người kháng thuốc nhiều",
+                    Line = "Bậc 2/3",
+                    Description = "Phác đồ mạnh cho bệnh nhân đã thất bại nhiều lần. Chi phí cao, tác dụng phụ nhiều hơn."
+                }
+            };
+            await context.ARVProtocols.AddRangeAsync(protocols);
+            await context.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.InnerException);
+        }
+    }
 }

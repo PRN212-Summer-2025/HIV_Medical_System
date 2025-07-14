@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HIVMedicalSystem.Domain.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250714092153_AddTestResult")]
-    partial class AddTestResult
+    [Migration("20250714170635_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,7 +48,7 @@ namespace HIVMedicalSystem.Domain.Data.Migrations
 
                     b.HasIndex("RecordId");
 
-                    b.ToTable("ARVMedicalRecord");
+                    b.ToTable("ARVMedicalRecords");
                 });
 
             modelBuilder.Entity("HIVMedicalSystem.Domain.Entities.ARVProtocol", b =>
@@ -66,6 +66,10 @@ namespace HIVMedicalSystem.Domain.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Line")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -76,7 +80,7 @@ namespace HIVMedicalSystem.Domain.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ARVProtocol");
+                    b.ToTable("ARVProtocols");
                 });
 
             modelBuilder.Entity("HIVMedicalSystem.Domain.Entities.Degree", b =>
@@ -159,7 +163,7 @@ namespace HIVMedicalSystem.Domain.Data.Migrations
 
                     b.HasIndex("DoctorId");
 
-                    b.ToTable("MedicalRecord");
+                    b.ToTable("MedicalRecords");
                 });
 
             modelBuilder.Entity("HIVMedicalSystem.Domain.Entities.Role", b =>
@@ -222,7 +226,7 @@ namespace HIVMedicalSystem.Domain.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("TestResult");
+                    b.ToTable("TestResults");
                 });
 
             modelBuilder.Entity("HIVMedicalSystem.Domain.Entities.User", b =>
