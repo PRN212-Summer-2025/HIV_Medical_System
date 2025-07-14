@@ -21,4 +21,10 @@ public class UserRepository: IUserRepository
         );
         return result.FirstOrDefault()!.RoleId; 
     }
+
+    public async Task<List<User>> SearchUsers(string search)
+    {
+        var result = await UserDAO.Instance.Get(item => item.FullName.Contains(search));
+        return result.ToList();
+    }
 }

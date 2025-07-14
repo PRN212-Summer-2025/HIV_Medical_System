@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows;
 using HIVMedicalSystem.Service.Abstraction;
 using HIVMedicalSystem.WPFApplication.Configuration;
+using HIVMedicalSystem.WPFApplication.Windows.Admin;
 using HIVMedicalSystem.WPFApplication.Windows.Authentication;
 using HIVMedicalSystem.WPFApplication.Windows.Customer;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,7 +41,7 @@ public partial class App : Application
         await _host.StartAsync();
         
         // Open the login window
-        var window = _host.Services.GetRequiredService<LoginWindow>();
+        var window = _host.Services.GetRequiredService<AdminDashboard>();
         window.Show();
         base.OnStartup(e);
     }
