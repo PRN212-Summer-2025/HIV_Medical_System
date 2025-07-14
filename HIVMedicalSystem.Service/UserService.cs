@@ -22,4 +22,9 @@ public class UserService : IUserService
     {
         return await _userRepository.Authentication(email, password);
     }
+
+    public async Task<List<User>> SearchUsers(string search)
+    {
+        return await _userRepository.SearchUsers(search);
+    }
 }

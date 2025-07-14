@@ -11,4 +11,8 @@ public class User: Entity<int>
     public int RoleId { get; set; }
     public virtual Role Role { get; set; }
     public virtual ICollection<Degree> Degrees { get; set; }
+    
+    public ICollection<MedicalRecord> MedicalRecordHistory { get; set; }
+    public ICollection<MedicalRecord> MedicalRecordsHandled { get; set; }
+    public ICollection<TestResult> TestResults { get; set; }
 }

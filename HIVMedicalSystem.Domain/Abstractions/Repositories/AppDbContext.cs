@@ -45,6 +45,29 @@ public class AppDbContext: DbContext
             .HasOne(entity => entity.DegreeType)
             .WithMany(entity =>  entity.Degrees)
             .HasForeignKey(entity => entity.DegreeTypeId);
+        //Test Result
+        modelBuilder.Entity<TestResult>()
+            .HasOne(entity => entity.User)
+            .WithMany(user => user.TestResults)
+            .HasForeignKey(entity => entity.UserId);
+        //ARVMedicalRecords
+        modelBuilder.Entity<ARVMedicalRecord>()
+            .HasOne(entity => entity.MedicalRecord)
+            .WithMany(entity => entity.ARVMedicalRecords)
+            .HasForeignKey(entity => entity.RecordId);
+        modelBuilder.Entity<ARVMedicalRecord>()
+            .HasOne(entity => entity.ARVProtocol)
+            .WithMany(entity => entity.ArvMedicalRecords)
+            .HasForeignKey(entity => entity.ARVProtocolId);
+        //Medical record
+        modelBuilder.Entity<MedicalRecord>()
+            .HasOne(entity => entity.Doctor)
+            .WithMany(entity => entity.MedicalRecordsHandled)
+            .HasForeignKey(entity => entity.DoctorId);
+        modelBuilder.Entity<MedicalRecord>()
+            .HasOne(entity => entity.Customer)
+            .WithMany(entity => entity.MedicalRecordHistory)
+            .HasForeignKey(entity => entity.CustomerId);
         
     }
 }

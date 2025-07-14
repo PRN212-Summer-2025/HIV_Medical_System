@@ -37,12 +37,16 @@
 
     <ItemGroup>
       <Folder Include="Assets\Images\" />
-      <Folder Include="Components\" />
       <Folder Include="Home\" />
     </ItemGroup>
 
     <ItemGroup>
       <Page Update="Assets\Styles\NavStyle.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Pages\Admin\UsersPage.xaml">
         <Generator>MSBuild:Compile</Generator>
         <XamlRuntime>Wpf</XamlRuntime>
         <SubType>Designer</SubType>
