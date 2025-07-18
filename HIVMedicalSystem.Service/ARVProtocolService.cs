@@ -18,6 +18,11 @@ public class ARVProtocolService: IARVProtocolService
         return await  _arvProtocolRepository.GetAllARVProtocols();
     }
 
+    public async Task<ARVProtocol> GetARVProtocolById(int protocolId)
+    {
+        return await _arvProtocolRepository.GetARVProtocolById(protocolId);
+    }
+
     public async Task AddNewARVProtocol(ARVProtocol arvProtocol)
     {
         await _arvProtocolRepository.AddNewARVProtocol(arvProtocol);

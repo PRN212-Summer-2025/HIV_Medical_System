@@ -9,5 +9,5 @@ public class MedicalRecordResponse
     public string DoctorName { get; set; }
     public string TreatmentNotes { get; set; }
     public string DiagnosisDate { get; set; }
-    
+    public List<ARVProtocol> ARVProtocols { get; set; }
 }

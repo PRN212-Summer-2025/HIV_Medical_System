@@ -12,6 +12,12 @@ public class ARVProtocolRepository: IARVProtocolRepository
         return result.ToList();
     }
 
+    public async Task<ARVProtocol> GetARVProtocolById(int protocolId)
+    {
+        var result = ARVProtocolDAO.Instance.GetByID(protocolId);
+        return result;
+    }
+
     public async Task AddNewARVProtocol(ARVProtocol arvProtocol)
     {
         ARVProtocolDAO.Instance.Insert(arvProtocol);

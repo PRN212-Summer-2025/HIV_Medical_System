@@ -4,6 +4,7 @@ using HIVMedicalSystem.WPFApplication.Pages.Admin;
 using HIVMedicalSystem.WPFApplication.Pages.Customer;
 using HIVMedicalSystem.WPFApplication.Pages.Staff;
 using HIVMedicalSystem.WPFApplication.Windows.Authentication;
+using HIVMedicalSystem.WPFApplication.Windows.Customer;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace HIVMedicalSystem.WPFApplication.Windows.Doctor;
@@ -57,7 +58,8 @@ public partial class DoctorWindow : Window
 
     private async void btnTestResults_Click(object sender, RoutedEventArgs e)
     {
-        
+        frmContent.Navigate(new TestResultsPage(_serviceProvider, 4, 0));
+        CurrentPage = 7;
     }
 
     private async void btnMedicalRecords_Click(object sender, RoutedEventArgs e)
@@ -79,6 +81,15 @@ public partial class DoctorWindow : Window
         switch (CurrentPage)
         {
             case 6:
+                var medicalRecordContent = frmContent.Content as MedicalRecordsPage;
+                var medicalIdSelected = medicalRecordContent.MedicalRecordIdSelected;
+                if (medicalIdSelected == 0)
+                {
+                    MessageBox.Show("Please select a medical record!");
+                    return;
+                }
+                var medicalRecordViewWindow = new MedicalRecordViewWindow(_serviceProvider, 4, medicalIdSelected);
+                medicalRecordViewWindow.Show();
                 break;
         }
     }

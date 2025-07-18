@@ -31,6 +31,20 @@
                     FontWeight="SemiBold"
                     Cursor="Hand"
                     HorizontalAlignment="Right"/>
+            <TextBlock Text="Search: "
+                       FontSize="24"
+                       Margin="0,0,20,0"
+                       FontWeight="Bold"
+                       Foreground="#2D8CFF"
+                       VerticalAlignment="Center"></TextBlock>
+            <TextBox x:Name="txtSearch"
+                     FontSize="24"
+                     Margin="0,0,30,0"
+                     FontWeight="Bold"
+                     Foreground="#2D8CFF"
+                     VerticalAlignment="Center" 
+                     Width="120"
+                     TextChanged="txtSearch_TextChanged"></TextBox>
         </StackPanel>
 
         <!-- DATA GRID -->

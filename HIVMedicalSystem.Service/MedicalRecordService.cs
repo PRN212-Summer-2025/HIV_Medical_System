@@ -29,6 +29,11 @@ public class MedicalRecordService: IMedicalRecordService
         return await _medicalRecordRepository.GetAllMedicalRecordsByCustomerId(customerId);
     }
 
+    public async Task<MedicalRecordResponse> GetMedicalRecordById(int medicalRecordId)
+    {
+        return await _medicalRecordRepository.GetMedicalRecordById(medicalRecordId);
+    }
+
     public async Task AddNewMedicalRecord(MedicalRecord medicalRecord)
     {
         await _medicalRecordRepository.AddNewMedicalRecord(medicalRecord);

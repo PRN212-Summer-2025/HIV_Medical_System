@@ -1,4 +1,6 @@
-﻿using HIVMedicalSystem.Domain.Abstractions.Repositories.DAOs;
+﻿using AutoMapper;
+using HIVMedicalSystem.Domain.Abstractions.Repositories.DAOs;
+using HIVMedicalSystem.Domain.DTOs.Responses;
 using HIVMedicalSystem.Domain.Entities;
 using HIVMedicalSystem.Repository.Abstraction;
 
@@ -6,16 +8,29 @@ namespace HIVMedicalSystem.Repository;
 
 public class TestResultRepository: ITestResultRepository
 {
-    public async Task<List<TestResult>> GetAllTestResults()
+    private readonly IMapper _mapper;
+
+    public TestResultRepository(IMapper mapper)
     {
-        var result = await TestResultDAO.Instance.Get(null, order => order.OrderByDescending(item => item.Id));
-        return result.ToList();
+        _mapper = mapper;
+    }
+    public async Task<List<TestResultDTO>> GetAllTestResults()
+    {
+        var result = await TestResultDAO.Instance.Get(null, order => order.OrderByDescending(item => item.Id), "User");
+        return _mapper.Map<List<TestResultDTO>>(result);
     }
 
-    public async Task<List<TestResult>> GetAllTestResultsOfCustomer(int customerId)
+    public async Task<List<TestResultDTO>> GetAllTestResultsOfCustomer(int customerId)
     {
-        var result = await TestResultDAO.Instance.Get(filter: filter => filter.UserId == customerId, order => order.OrderByDescending(item => item.Id));
-        return result.ToList();
+        var result = await TestResultDAO.Instance.Get(filter: filter => filter.UserId == customerId, order => order.OrderByDescending(item => item.Id), "User");
+        return _mapper.Map<List<TestResultDTO>>(result);
+    }
+
+    public async Task<List<TestResultDTO>> SearchTestResultsByCustomerName(string customerName)
+    {
+        var list = await TestResultDAO.Instance.Get(filter => filter.User.FullName.Contains(customerName),
+            order => order.OrderByDescending(item => item.Id), "User");
+        return _mapper.Map<List<TestResultDTO>>(list);
     }
 
     public async Task AddTestResult(TestResult testResult)

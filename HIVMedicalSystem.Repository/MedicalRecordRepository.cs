@@ -17,8 +17,18 @@ public class MedicalRecordRepository: IMedicalRecordRepository
     
     public async Task<List<MedicalRecordResponse>> GetAllMedicalRecords()
     {
-        var result = await MedicalRecordDAO.Instance.Get();
-        return _mapper.Map<List<MedicalRecordResponse>>(result);
+        var result = await MedicalRecordDAO.Instance.Get(null, null, "ARVMedicalRecords,Doctor,Customer");
+        var response = _mapper.Map<List<MedicalRecordResponse>>(result);
+        for (var i = 0; i < response.Count; i++)
+        {
+            response[i].ARVProtocols = new List<ARVProtocol>();
+            foreach (var item in result.ToList()[i].ARVMedicalRecords)
+            {
+                var protocol = ARVProtocolDAO.Instance.GetByID(item.ARVProtocolId);
+                response[i].ARVProtocols.Add(protocol);
+            }
+        }
+        return response;
     }
 
     public async Task<List<MedicalRecordResponse>> GetAllMedicalRecordsByDoctorId(int doctorId)
@@ -29,8 +39,32 @@ public class MedicalRecordRepository: IMedicalRecordRepository
 
     public async Task<List<MedicalRecordResponse>> GetAllMedicalRecordsByCustomerId(int customerId)
     {
-        var result = await MedicalRecordDAO.Instance.Get(filter: item => item.CustomerId == customerId);
-        return _mapper.Map<List<MedicalRecordResponse>>(result);
+        var result = await MedicalRecordDAO.Instance.Get(filter: item => item.CustomerId == customerId, null, "ARVMedicalRecords,Doctor,Customer");
+        var response = _mapper.Map<List<MedicalRecordResponse>>(result);
+        for (var i = 0; i < response.Count; i++)
+        {
+            response[i].ARVProtocols = new List<ARVProtocol>();
+            foreach (var item in result.ToList()[i].ARVMedicalRecords)
+            {
+                var protocol = ARVProtocolDAO.Instance.GetByID(item.ARVProtocolId);
+                response[i].ARVProtocols.Add(protocol);
+            }
+        }
+        return response;
+    }
+
+    public async Task<MedicalRecordResponse> GetMedicalRecordById(int medicalRecordId)
+    {
+        var list = await MedicalRecordDAO.Instance.Get(filter => filter.Id == medicalRecordId, null, "ARVMedicalRecords,Customer,Doctor");
+        var result = list.FirstOrDefault();
+        var response = _mapper.Map<MedicalRecordResponse>(result);
+        response.ARVProtocols = new List<ARVProtocol>();
+        foreach (var item in result.ARVMedicalRecords)
+        {
+            var protocol = ARVProtocolDAO.Instance.GetByID(item.ARVProtocolId);
+            response.ARVProtocols.Add(protocol);
+        }
+        return response;
     }
 
     public async Task AddNewMedicalRecord(MedicalRecord medicalRecord)
