@@ -1,4 +1,5 @@
-﻿using HIVMedicalSystem.Domain.Entities;
+﻿using HIVMedicalSystem.Domain.DTOs.Responses;
+using HIVMedicalSystem.Domain.Entities;
 using HIVMedicalSystem.Repository.Abstraction;
 using HIVMedicalSystem.Service.Abstraction;
 
@@ -13,9 +14,29 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
     
-    public async Task<List<User>> GetAllUsersAsync()
+    public async Task<List<UserDTO>> GetAllUsersAsync()
     {
         return await _userRepository.GetAllUsersAsync();
+    }
+
+    public async Task<List<UserDTO>> GetAllCustomersAsync()
+    {
+        return await _userRepository.GetAllCustomersAsync();
+    }
+
+    public async Task<List<UserDTO>> GetAllDoctorsAsync()
+    {
+        return await _userRepository.GetAllDoctorsAsync();
+    }
+
+    public async Task<User> GetUserByIdAsync(int id)
+    {
+        return await _userRepository.GetUserByIdAsync(id);
+    }
+
+    public async Task<User> GetUserByEmailAsync(string email)
+    {
+        return await _userRepository.GetUserByEmailAsync(email);
     }
 
     public async Task<int> Authentication(string email, string password)
@@ -23,7 +44,7 @@ public class UserService : IUserService
         return await _userRepository.Authentication(email, password);
     }
 
-    public async Task<List<User>> SearchUsers(string search)
+    public async Task<List<UserDTO>> SearchUsers(string search)
     {
         return await _userRepository.SearchUsers(search);
     }

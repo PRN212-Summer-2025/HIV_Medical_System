@@ -12,5 +12,6 @@ public class SeedingDatabaseRepository: ISeedingDatabaseRepository
         await DataSeeding.Instance.UserSeedingAsync();
         await DataSeeding.Instance.DegreeTypeSeedingAsync();
         await DataSeeding.Instance.DegreeSeedingAsync();
+        await DataSeeding.Instance.ARVProtocolSeedingAsync();
     }
 }

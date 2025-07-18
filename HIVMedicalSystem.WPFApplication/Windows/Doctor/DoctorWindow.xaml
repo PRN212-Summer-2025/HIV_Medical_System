@@ -1,0 +1,105 @@
+﻿<Window x:Class="HIVMedicalSystem.WPFApplication.Windows.Doctor.DoctorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:HIVMedicalSystem.WPFApplication.Windows.Doctor"
+        xmlns:userControls="clr-namespace:HIVMedicalSystem.WPFApplication.Components"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Title="DoctorWindow" Height="600" Width="1200">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Assets/Styles/NavStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="#FAFAFA">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>   <!-- Header -->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="300"/>      <!-- Main content -->
+            <RowDefinition Height="100"></RowDefinition>    
+        </Grid.RowDefinitions>
+
+        <!-- HEADER -->
+        <Border Background="#2D8CFF" Padding="20" >
+            <StackPanel>
+                <TextBlock Text="🏥 HIV Medical System"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+                <TextBlock Text="Supporting access to care and reducing stigma"
+                           FontSize="16"
+                           Foreground="White"
+                           Margin="0,5,0,0"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="1" Background="White" Padding="10" BorderBrush="#DDD" BorderThickness="0,0,0,1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            
+                <!-- Home -->
+                <Button Click="btnHome_Click" Content="🏠 Home" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
+
+                <!-- Book Appointment -->
+                <Button Click="btnAppointments_Click" Content="📅 Book Appointment" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
+
+                <!-- Test Results -->
+                <Button Click="btnTestResults_Click" Content="🧪 Test Results" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
+                <Button Click="btnTestResults_Click" Content="🧪 Medical Records" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
+
+                <!-- Treatment Plan -->
+                <Button Click="btnTreatmentPlan_Click" Content="💊 Treatment Plan" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
+
+                <!-- Anonymous Support -->
+                <Button Click="btnAnonymousSupport_Click" Content="🙋 Anonymous Support" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
+                <Button Click="btnLogout_Click" Content="Log out" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- MAIN CONTENT -->
+        <Frame Grid.Row="2" x:Name="frmContent" NavigationUIVisibility="Hidden"></Frame>
+        <StackPanel Grid.Row="3"
+                    Margin="20"
+                    Height="100">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>             
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <userControls:Button 
+                        ButtonColor="#6DE1D2"
+                        ButtonTextValue="View"
+                        Click="btnView_Click"></userControls:Button>
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="2">
+                    <userControls:Button 
+                        ButtonColor="#FED16A"
+                        ButtonTextValue="Create record"
+                        Click="btnCreateMedicalRecord_Click"></userControls:Button>
+                </StackPanel>
+                <!--
+                <StackPanel Grid.Row="0" Grid.Column="4">
+                    <userControls:Button 
+                        ButtonColor="#FF3F33"
+                        ButtonTextValue="Delete"
+                        Click="btnDelete_Click"></userControls:Button>
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="6">
+                    <userControls:Button 
+                        ButtonColor="#89AC46"
+                        ButtonTextValue="View"
+                        Click="btnView_Click"></userControls:Button>
+                </StackPanel>-->
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

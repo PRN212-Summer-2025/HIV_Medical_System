@@ -28,6 +28,12 @@ public class AppDbContext: DbContext
     public DbSet<Role> Roles { get; set; }
     public DbSet<Degree> Degrees { get; set; }
     public DbSet<DegreeType> DegreeTypes { get; set; }
+    public DbSet<ARVProtocol>  ARVProtocols { get; set; }
+    public DbSet<MedicalRecord> MedicalRecords { get; set; }
+    public DbSet<TestResult> TestResults { get; set; }
+    public DbSet<ARVMedicalRecord> ARVMedicalRecords { get; set; }
+    public DbSet<Appointment> Appointments { get; set; }
+    
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -68,6 +74,14 @@ public class AppDbContext: DbContext
             .HasOne(entity => entity.Customer)
             .WithMany(entity => entity.MedicalRecordHistory)
             .HasForeignKey(entity => entity.CustomerId);
-        
+        //Appointment
+        modelBuilder.Entity<Appointment>() 
+            .HasOne(entity => entity.Customer)
+            .WithMany(entity => entity.AppointmentsBooked)
+            .HasForeignKey(entity => entity.CustomerId);
+        modelBuilder.Entity<Appointment>()
+            .HasOne(entity => entity.Doctor)
+            .WithMany(entity => entity.AppointmentsHandled)
+            .HasForeignKey(entity => entity.DoctorId);
     }
 }

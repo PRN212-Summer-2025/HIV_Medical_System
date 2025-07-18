@@ -45,7 +45,7 @@ namespace HIVMedicalSystem.Domain.Data.Migrations
 
                     b.HasIndex("RecordId");
 
-                    b.ToTable("ARVMedicalRecord");
+                    b.ToTable("ARVMedicalRecords");
                 });
 
             modelBuilder.Entity("HIVMedicalSystem.Domain.Entities.ARVProtocol", b =>
@@ -63,6 +63,10 @@ namespace HIVMedicalSystem.Domain.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Line")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -73,7 +77,42 @@ namespace HIVMedicalSystem.Domain.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ARVProtocol");
+                    b.ToTable("ARVProtocols");
+                });
+
+            modelBuilder.Entity("HIVMedicalSystem.Domain.Entities.Appointment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AppointmentDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsAnonymous")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("DoctorId");
+
+                    b.ToTable("Appointments");
                 });
 
             modelBuilder.Entity("HIVMedicalSystem.Domain.Entities.Degree", b =>
@@ -156,7 +195,7 @@ namespace HIVMedicalSystem.Domain.Data.Migrations
 
                     b.HasIndex("DoctorId");
 
-                    b.ToTable("MedicalRecord");
+                    b.ToTable("MedicalRecords");
                 });
 
             modelBuilder.Entity("HIVMedicalSystem.Domain.Entities.Role", b =>
@@ -219,7 +258,7 @@ namespace HIVMedicalSystem.Domain.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("TestResult");
+                    b.ToTable("TestResults");
                 });
 
             modelBuilder.Entity("HIVMedicalSystem.Domain.Entities.User", b =>
@@ -276,6 +315,25 @@ namespace HIVMedicalSystem.Domain.Data.Migrations
                     b.Navigation("ARVProtocol");
 
                     b.Navigation("MedicalRecord");
+                });
+
+            modelBuilder.Entity("HIVMedicalSystem.Domain.Entities.Appointment", b =>
+                {
+                    b.HasOne("HIVMedicalSystem.Domain.Entities.User", "Customer")
+                        .WithMany("AppointmentsBooked")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HIVMedicalSystem.Domain.Entities.User", "Doctor")
+                        .WithMany("AppointmentsHandled")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Doctor");
                 });
 
             modelBuilder.Entity("HIVMedicalSystem.Domain.Entities.Degree", b =>
@@ -360,6 +418,10 @@ namespace HIVMedicalSystem.Domain.Data.Migrations
 
             modelBuilder.Entity("HIVMedicalSystem.Domain.Entities.User", b =>
                 {
+                    b.Navigation("AppointmentsBooked");
+
+                    b.Navigation("AppointmentsHandled");
+
                     b.Navigation("Degrees");
 
                     b.Navigation("MedicalRecordHistory");

@@ -38,19 +38,21 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
             
                 <!-- Home -->
-                <Button Content="🤵 Users" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
+                <Button Click="btnUsers_Click" Content="🤵 Users" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
 
                 <!-- Book Appointment -->
-                <Button Content="asdas" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
+                <Button Click="btnAppointments_Click" Content="🤵 Appointment" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
 
                 <!-- Test Results -->
-                <Button Content="🧪 Test Results" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
+                <Button Click="btnTestResult_Click" Content="🧪 Test Results" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
 
                 <!-- Treatment Plan -->
-                <Button Content="💊 Treatment Plan" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
+                <Button Click="btnTestResult_Click" Content="💊 Treatment Plan" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
 
                 <!-- Anonymous Support -->
-                <Button Content="🙋 Anonymous Support" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
+                <Button Click="btnAnonymousSupport_Click" Content="🙋 Anonymous Support" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
+                <Button Click="btnLogout_Click" Content="Log out" Style="{StaticResource NavButtonStyle}"  Margin="8,0"/>
+
             </StackPanel>
         </Border>
 
