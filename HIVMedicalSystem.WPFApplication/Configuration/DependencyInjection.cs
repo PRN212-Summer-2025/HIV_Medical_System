@@ -5,6 +5,7 @@ using HIVMedicalSystem.Service.Abstraction;
 using HIVMedicalSystem.WPFApplication.Windows.Admin;
 using HIVMedicalSystem.WPFApplication.Windows.Authentication;
 using HIVMedicalSystem.WPFApplication.Windows.Customer;
+using HIVMedicalSystem.WPFApplication.Windows.Doctor;
 using HIVMedicalSystem.WPFApplication.Windows.Staff;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -41,6 +42,8 @@ public static class DependencyInjection
         services.AddTransient<LoginWindow>();
         services.AddTransient<AdminDashboard>();
         services.AddTransient<StaffDashboard>();
+        services.AddTransient<ImportTestResultWindow>();
+        services.AddTransient<DoctorWindow>();
         return services;
     }
 

@@ -8,13 +8,13 @@ public class TestResultRepository: ITestResultRepository
 {
     public async Task<List<TestResult>> GetAllTestResults()
     {
-        var result = await TestResultDAO.Instance.Get();
+        var result = await TestResultDAO.Instance.Get(null, order => order.OrderByDescending(item => item.Id));
         return result.ToList();
     }
 
     public async Task<List<TestResult>> GetAllTestResultsOfCustomer(int customerId)
     {
-        var result = await TestResultDAO.Instance.Get(filter: filter => filter.UserId == customerId);
+        var result = await TestResultDAO.Instance.Get(filter: filter => filter.UserId == customerId, order => order.OrderByDescending(item => item.Id));
         return result.ToList();
     }
 

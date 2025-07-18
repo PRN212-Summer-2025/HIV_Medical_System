@@ -42,7 +42,7 @@ public partial class App : Application
         await _host.StartAsync();
         
         // Open the login window
-        var window = _host.Services.GetRequiredService<StaffDashboard>();
+        var window = _host.Services.GetRequiredService<LoginWindow>();
         window.Show();
         base.OnStartup(e);
     }

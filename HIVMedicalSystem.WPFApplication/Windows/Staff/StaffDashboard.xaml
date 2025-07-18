@@ -41,8 +41,8 @@
             
                 <!-- Home -->
                 <Button Click="btnUsers_Click" Content="🤵 Users" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
-
                 <!-- Book Appointment -->
+                <Button Click="btnAppointments_Click" Content="📅 Appointment" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
 
                 <!-- Test Results -->
                 <Button Click="btnTestResult_Click" Content="🧪 Test Results" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
@@ -52,6 +52,8 @@
 
                 <!-- Anonymous Support -->
                 <Button Click="btnAnonymousSupport_Click" Content="🙋 Anonymous Support" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
+                <Button Click="btnLogout_Click" Content="Log out" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
+
             </StackPanel>
         </Border>
 

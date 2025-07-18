@@ -211,7 +211,7 @@ public class DataSeeding
                 },
                 new User
                 {
-                    FullName = "Admin Nguyễn Văn Khánh",
+                    FullName = "Staff Nguyễn Văn Khánh",
                     RoleId = 1,
                     Email = "khanh.nguyen@admin.com",
                     Password = "12345678",
@@ -220,7 +220,7 @@ public class DataSeeding
                 },
                 new User
                 {
-                    FullName = "Admin Trần Thị Hồng",
+                    FullName = "Staff Trần Thị Hồng",
                     RoleId = 1,
                     Email = "hong.tran@admin.com",
                     Password = "12345678",
@@ -229,7 +229,7 @@ public class DataSeeding
                 },
                 new User
                 {
-                    FullName = "Admin Lê Minh Nhật",
+                    FullName = "Staff Lê Minh Nhật",
                     RoleId = 1,
                     Email = "nhat.le@admin.com",
                     Password = "12345678",
@@ -238,47 +238,56 @@ public class DataSeeding
                 },
                 new User
                 {
-                    FullName = "Admin Phạm Hữu Toàn",
+                    FullName = "Staff Phạm Hữu Toàn",
                     RoleId = 1,
                     Email = "toan.pham@admin.com",
                     Password = "12345678",
                     PhoneNumber = "0977001004",
                     IsDeleted = false
                 },
-                new User
+                new()
                 {
-                    FullName = "Admin Đỗ Thị Lệ",
+                    FullName = "Staff Đỗ Thị Lệ",
                     RoleId = 1,
                     Email = "le.do@admin.com",
                     Password = "12345678",
                     PhoneNumber = "0977001005",
                     IsDeleted = false
                 },
-                new User
+                new()
                 {
-                    FullName = "Admin Bùi Quang Huy",
+                    FullName = "Staff Bùi Quang Huy",
                     RoleId = 1,
                     Email = "huy.bui@admin.com",
                     Password = "12345678",
                     PhoneNumber = "0977001006",
                     IsDeleted = false
                 },
-                new User
+                new()
                 {
-                    FullName = "Admin Vũ Hồng Ngọc",
+                    FullName = "Staff Vũ Hồng Ngọc",
                     RoleId = 1,
                     Email = "ngoc.vu@admin.com",
                     Password = "12345678",
                     PhoneNumber = "0977001007",
                     IsDeleted = false
                 },
-                new User
+                new User()
                 {
-                    FullName = "Admin Mai Văn Dũng",
+                    FullName = "Staff Mai Văn Dũng",
                     RoleId = 1,
                     Email = "dung.mai@admin.com",
                     Password = "12345678",
                     PhoneNumber = "0977001008",
+                    IsDeleted = false
+                },
+                new User()
+                {
+                    FullName = "Admin",
+                    RoleId = 2,
+                    Email = "admin@admin.com",
+                    Password = "12345678",
+                    PhoneNumber = "0977001009",
                     IsDeleted = false
                 }
             };
@@ -324,7 +333,7 @@ public class DataSeeding
             var degrees = new List<Degree>();
             foreach (var doctor in doctors)
             {
-                degrees.Add(new Degree()
+                degrees.Add(new()
                 {
                     DegreeName = "Doctor's Degrees",
                     DegreeTypeId = 1,

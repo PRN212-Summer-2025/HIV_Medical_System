@@ -1,4 +1,6 @@
-﻿using HIVMedicalSystem.Domain.Abstractions.Repositories.DAOs;
+﻿using AutoMapper;
+using HIVMedicalSystem.Domain.Abstractions.Repositories.DAOs;
+using HIVMedicalSystem.Domain.DTOs.Responses;
 using HIVMedicalSystem.Domain.Entities;
 using HIVMedicalSystem.Repository.Abstraction;
 
@@ -6,22 +8,29 @@ namespace HIVMedicalSystem.Repository;
 
 public class MedicalRecordRepository: IMedicalRecordRepository
 {
-    public async Task<List<MedicalRecord>> GetAllMedicalRecords()
+    private readonly IMapper _mapper;
+
+    public MedicalRecordRepository(IMapper mapper)
+    {
+        _mapper = mapper;
+    }
+    
+    public async Task<List<MedicalRecordResponse>> GetAllMedicalRecords()
     {
         var result = await MedicalRecordDAO.Instance.Get();
-        return result.ToList();
+        return _mapper.Map<List<MedicalRecordResponse>>(result);
     }
 
-    public async Task<List<MedicalRecord>> GetAllMedicalRecordsByDoctorId(int doctorId)
+    public async Task<List<MedicalRecordResponse>> GetAllMedicalRecordsByDoctorId(int doctorId)
     {
         var result = await MedicalRecordDAO.Instance.Get(filter: item => item.DoctorId == doctorId);
-        return result.ToList();
+        return _mapper.Map<List<MedicalRecordResponse>>(result);
     }
 
-    public async Task<List<MedicalRecord>> GetAllMedicalRecordsByCustomerId(int customerId)
+    public async Task<List<MedicalRecordResponse>> GetAllMedicalRecordsByCustomerId(int customerId)
     {
         var result = await MedicalRecordDAO.Instance.Get(filter: item => item.CustomerId == customerId);
-        return result.ToList();
+        return _mapper.Map<List<MedicalRecordResponse>>(result);
     }
 
     public async Task AddNewMedicalRecord(MedicalRecord medicalRecord)

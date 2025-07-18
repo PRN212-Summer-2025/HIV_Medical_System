@@ -38,7 +38,6 @@
     <ItemGroup>
       <Folder Include="Assets\Images\" />
       <Folder Include="Home\" />
-      <Folder Include="Windows\Doctor\" />
     </ItemGroup>
 
     <ItemGroup>

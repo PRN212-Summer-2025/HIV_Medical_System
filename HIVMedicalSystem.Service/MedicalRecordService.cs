@@ -1,4 +1,5 @@
-﻿using HIVMedicalSystem.Domain.Entities;
+﻿using HIVMedicalSystem.Domain.DTOs.Responses;
+using HIVMedicalSystem.Domain.Entities;
 using HIVMedicalSystem.Repository.Abstraction;
 using HIVMedicalSystem.Service.Abstraction;
 
@@ -13,17 +14,17 @@ public class MedicalRecordService: IMedicalRecordService
         _medicalRecordRepository = medicalRecordRepository;
     }
     
-    public async Task<List<MedicalRecord>> GetAllMedicalRecords()
+    public async Task<List<MedicalRecordResponse>> GetAllMedicalRecords()
     {
         return await _medicalRecordRepository.GetAllMedicalRecords();
     }
 
-    public async Task<List<MedicalRecord>> GetAllMedicalRecordsByDoctorId(int doctorId)
+    public async Task<List<MedicalRecordResponse>> GetAllMedicalRecordsByDoctorId(int doctorId)
     {
         return await _medicalRecordRepository.GetAllMedicalRecordsByDoctorId(doctorId);
     }
 
-    public async Task<List<MedicalRecord>> GetAllMedicalRecordsByCustomerId(int customerId)
+    public async Task<List<MedicalRecordResponse>> GetAllMedicalRecordsByCustomerId(int customerId)
     {
         return await _medicalRecordRepository.GetAllMedicalRecordsByCustomerId(customerId);
     }

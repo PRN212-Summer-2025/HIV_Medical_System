@@ -2,6 +2,7 @@
 using HIVMedicalSystem.WPFApplication.Pages.Admin;
 using HIVMedicalSystem.WPFApplication.Pages.Customer;
 using HIVMedicalSystem.WPFApplication.Pages.Staff;
+using HIVMedicalSystem.WPFApplication.Windows.Authentication;
 
 namespace HIVMedicalSystem.WPFApplication.Windows.Staff;
 
@@ -18,19 +19,24 @@ public partial class StaffDashboard : Window
     
     private async void Window_Loaded(object sender, RoutedEventArgs e)
     {
-        frmContent.Navigate(new UsersPage(_serviceProvider));
+        frmContent.Navigate(new UsersPage(_serviceProvider, 1));
         CurrentPage = 1;
     }
 
     private async void btnUsers_Click(object sender, RoutedEventArgs e)
     {
-        frmContent.Navigate(new UsersPage(_serviceProvider));
+        frmContent.Navigate(new UsersPage(_serviceProvider, 1));
         CurrentPage = 1;
+    }
+
+    private async void btnAppointments_Click(object sender, RoutedEventArgs e)
+    {
+        frmContent.Navigate(new AppointmentsPage(_serviceProvider, 1,0,0));
     }
 
     private async void btnTestResult_Click(object sender, RoutedEventArgs e)
     {
-        frmContent.Navigate(new TestResultsPage(_serviceProvider));
+        frmContent.Navigate(new TestResultsPage(_serviceProvider, 1, 0));
         CurrentPage = 2;
     }
     
@@ -65,6 +71,20 @@ public partial class StaffDashboard : Window
 
     private async void btnUpdateTest_Click(object sender, RoutedEventArgs e)
     {
-        
+        switch (CurrentPage)
+        {
+            case 1:
+                var userContent = frmContent.Content as UsersPage;
+                var importTestResultWindow = new ImportTestResultWindow(_serviceProvider, userContent.UserIdSelected);
+                importTestResultWindow.Show();
+                break;
+        }
+    }
+
+    private async void btnLogout_Click(object sender, RoutedEventArgs e)
+    {
+        var loginWindow = new LoginWindow(_serviceProvider);
+        loginWindow.Show();
+        this.Close();
     }
 }
