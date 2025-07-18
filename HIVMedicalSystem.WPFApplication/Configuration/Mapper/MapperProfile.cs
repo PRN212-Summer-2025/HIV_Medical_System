@@ -11,6 +11,7 @@ public class MapperProfile: Profile
         TestResultMapperProfile();
         UserMapperProfile();
         AppointmentMapperProfile();
+        MedicalRecordMapperProfile();
     }
 
     public void AppointmentMapperProfile()
@@ -26,7 +27,11 @@ public class MapperProfile: Profile
 
     public void TestResultMapperProfile()
     {
-        
+        CreateMap<TestResult, TestResultDTO>()
+            .ForMember(dest => dest.CustomerName,
+                option => option.MapFrom(schema => schema.User.FullName))
+            .ForMember(dest => dest.TestDate,
+                option => option.MapFrom(schema => schema.TestDate.ToString("dd-MM-yyyy")));
     }
 
     public void UserMapperProfile()

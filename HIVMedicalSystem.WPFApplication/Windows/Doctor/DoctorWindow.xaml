@@ -47,7 +47,7 @@
 
                 <!-- Test Results -->
                 <Button Click="btnTestResults_Click" Content="🧪 Test Results" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
-                <Button Click="btnTestResults_Click" Content="🧪 Medical Records" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
+                <Button Click="btnMedicalRecords_Click" Content="🧪 Medical Records" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
 
                 <!-- Treatment Plan -->
                 <Button Click="btnTreatmentPlan_Click" Content="💊 Treatment Plan" Style="{StaticResource NavButtonStyle}" Margin="8,0"/>
@@ -86,19 +86,16 @@
                         ButtonTextValue="Create record"
                         Click="btnCreateMedicalRecord_Click"></userControls:Button>
                 </StackPanel>
-                <!--
                 <StackPanel Grid.Row="0" Grid.Column="4">
                     <userControls:Button 
                         ButtonColor="#FF3F33"
-                        ButtonTextValue="Delete"
-                        Click="btnDelete_Click"></userControls:Button>
+                        ButtonTextValue="Update"></userControls:Button>
                 </StackPanel>
                 <StackPanel Grid.Row="0" Grid.Column="6">
                     <userControls:Button 
                         ButtonColor="#89AC46"
-                        ButtonTextValue="View"
-                        Click="btnView_Click"></userControls:Button>
-                </StackPanel>-->
+                        ButtonTextValue="Delete"></userControls:Button>
+                </StackPanel>
             </Grid>
         </StackPanel>
     </Grid>

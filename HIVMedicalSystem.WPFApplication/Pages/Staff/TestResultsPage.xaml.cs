@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using HIVMedicalSystem.Domain.DTOs.Responses;
 using HIVMedicalSystem.Domain.Entities;
 using HIVMedicalSystem.Service.Abstraction;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +15,7 @@ public partial class TestResultsPage : Page
     {
         _serviceProvider = serviceProvider;
         CustomerId = customerId;
+        RoleAccess = roleAccess;
         _testResultService = _serviceProvider.GetRequiredService<ITestResultService>();
         InitializeComponent();
     }
@@ -22,7 +24,7 @@ public partial class TestResultsPage : Page
     public int RoleAccess { get; set; }
     private async void Page_Loaded(object sender, RoutedEventArgs e)
     {
-        var result = new List<TestResult>();
+        var result = new List<TestResultDTO>();
         switch (RoleAccess)
         {
             case 1:
@@ -44,7 +46,7 @@ public partial class TestResultsPage : Page
 
     private async void btnRefresh_Click(object sender, RoutedEventArgs e)
     {
-        var result = new List<TestResult>();
+        var result = new List<TestResultDTO>();
         switch (RoleAccess)
         {
             case 1:
@@ -60,12 +62,29 @@ public partial class TestResultsPage : Page
                 dgData.ItemsSource = result;
                 break;
             case 4:
+                result = await _testResultService.GetAllTestResults();
+                dgData.ItemsSource = result;
                 break;
         }
     }
 
     private async void txtSearch_TextChanged(object sender, RoutedEventArgs e)
     {
-        
+        var result = new List<TestResultDTO>();
+        switch (RoleAccess)
+        {
+            case 1:
+                result = await _testResultService.SearchTestResultsByCustomerName(txtSearch.Text);
+                dgData.ItemsSource = result;
+                break;
+            case 2:
+                result = await _testResultService.SearchTestResultsByCustomerName(txtSearch.Text);
+                dgData.ItemsSource = result;
+                break;
+            case 4:
+                result = await _testResultService.SearchTestResultsByCustomerName(txtSearch.Text);
+                dgData.ItemsSource = result;
+                break;
+        }
     }
 }

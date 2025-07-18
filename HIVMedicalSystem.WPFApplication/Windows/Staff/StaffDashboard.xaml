@@ -85,19 +85,18 @@
                         ButtonTextValue="Update Test"
                         Click="btnUpdateTest_Click"></userControls:Button>
                 </StackPanel>
-                <!--
+                
                 <StackPanel Grid.Row="0" Grid.Column="4">
                     <userControls:Button 
                         ButtonColor="#FF3F33"
-                        ButtonTextValue="Delete"
-                        Click="btnDelete_Click"></userControls:Button>
+                        ButtonTextValue="Create"
+                        ></userControls:Button>
                 </StackPanel>
                 <StackPanel Grid.Row="0" Grid.Column="6">
                     <userControls:Button 
                         ButtonColor="#89AC46"
-                        ButtonTextValue="View"
-                        Click="btnView_Click"></userControls:Button>
-                </StackPanel>-->
+                        ButtonTextValue="Update"></userControls:Button>
+                </StackPanel>
             </Grid>
         </StackPanel>
     </Grid>
